@@ -5,7 +5,9 @@ import functools
 import orjson
 import time
 from warnings import warn
-
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+import base64
 import dateutil.parser
 import pytz
 import backoff as backoff_module
@@ -180,6 +182,14 @@ def parse_args(required_config_keys):
         args.catalog = Catalog.load(args.catalog)
 
     check_config(args.config, required_config_keys)
+    
+    for key, value in args.config.items():
+        if isinstance(value, str):
+            if len(value) >= 344 and value[-2:] == "==":
+                privateKey = RSA.importKey(open("/etc/private.pem","rb").read())
+                cipher_rsa = PKCS1_OAEP.new(privateKey)
+                decryptedPassword = cipher_rsa.decrypt(base64.b64decode(value)).decode()
+                args.config[key] = decryptedPassword 
 
     return args
 
