@@ -24,6 +24,8 @@ setup(name="pipelinewise-singer-python",
           'python-dateutil>=2.6.0',
           'backoff==2.1.2',
           'ciso8601',
+          'pycryptodome',
+          'pycryptodomex',
       ],
       extras_require={
           'dev': [
