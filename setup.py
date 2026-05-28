@@ -25,7 +25,7 @@ setup(name="pipelinewise-singer-python",
       install_requires=[
           'pytz',
           'jsonschema>=4.16.0',
-          'orjson==3.7.2',
+          'orjson>=3.9.0,<4',
           'python-dateutil>=2.6.0',
           'backoff==2.1.2',
           'ciso8601',
