@@ -6,21 +6,26 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name="pipelinewise-singer-python",
-      version='2.0.1',
+      version='2.0.2',
       description="Singer.io utility library - PipelineWise compatible",
-      python_requires=">=3.7.0, <3.11",
+      python_requires=">=3.7.0",
       long_description=long_description,
       long_description_content_type="text/markdown",
       author="TransferWise",
       classifiers=[
           'License :: OSI Approved :: Apache Software License',
-          'Programming Language :: Python :: 3 :: Only'
+          'Programming Language :: Python :: 3 :: Only',
+          'Programming Language :: Python :: 3.7',
+          'Programming Language :: Python :: 3.8',
+          'Programming Language :: Python :: 3.9',
+          'Programming Language :: Python :: 3.10',
+          'Programming Language :: Python :: 3.11',
       ],
       url="https://github.com/transferwise/pipelinewise-singer-python",
       install_requires=[
           'pytz',
           'jsonschema>=4.16.0',
-          'orjson==3.7.2',
+          'orjson>=3.9.0,<4',
           'python-dateutil>=2.6.0',
           'backoff==2.1.2',
           'ciso8601',
